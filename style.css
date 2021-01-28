@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: linear-gradient(grey, black);
+}
+body {
+  background-color: none;
+}
+
+.container {
+  background-color: black;
+  border-radius: 10px;
+  font-family: sans-serif;
+  padding: 20px;
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-bottom: 10%;
+  width: 500px;
+  height: 750px;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "display display display display"
+    "allclear clearentry posneg plus"
+    "1 2 3 minus"
+    "4 5 6 times"
+    "7 8 9 divide"
+    "zero zero decimal equal";
+}
+
+.container > button {
+  border-radius: 50%;
+  font-size: 40px;
+  border: none;
+}
+
+.container > button:hover {
+  cursor: pointer;
+}
+
+.container > button:active {
+  box-shadow: 0 0 0 white;
+  margin: 5px;
+}
+
+.display {
+  color: white;
+  font-size: 36px;
+}
+
+.number {
+  background-color: lightgray;
+}
+
+.operator,
+.equal,
+.allclear,
+.clearentry,
+.posneg,
+.decimal {
+  background-color: orange;
+}
+
+#display {
+  grid-area: display;
+  background-color: black;
+  color: white;
+}
+
+#allclear {
+  grid-area: allclear;
+}
+
+#clearentry {
+  grid-area: clearentry;
+}
+
+#posneg {
+  grid-area: posneg;
+}
+
+#plus {
+  grid-area: plus;
+}
+
+#minus {
+  grid-area: minus;
+}
+
+#times {
+  grid-area: times;
+}
+
+#divide {
+  grid-area: divide;
+}
+
+#decimal {
+  grid-area: decimal;
+  font-size: 36px;
+}
+
+#equal {
+  grid-area: equal;
+}
+
+#1 {
+  grid-area: 1;
+}
+
+#2 {
+  grid-area: 2;
+}
+
+#3 {
+  grid-area: 3;
+}
+
+#4 {
+  grid-area: 4;
+}
+
+#5 {
+  grid-area: 5;
+}
+
+#6 {
+  grid-area: 6;
+}
+
+#7 {
+  grid-area: 7;
+}
+
+#8 {
+  grid-area: 8;
+}
+
+#9 {
+  grid-area: 9;
+}
+
+#zero {
+  grid-area: zero;
+  border-radius: 50px;
+}
+
+@media all and (max-width: 700px) {
+  .container {
+    margin: auto;
+    margin-bottom: 20%;
+    padding: auto;
+  }
+}
