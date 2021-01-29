@@ -51,7 +51,9 @@ body {
 
 .display {
   color: white;
-  font-size: 36px;
+  font-size: 64px;
+  text-align: right;
+  padding-top: 5%;
 }
 
 .number {
