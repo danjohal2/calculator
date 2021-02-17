@@ -10,16 +10,18 @@ let posneg = document.querySelector(".posneg");
 
 
 
-let firstOperand = [];
-let currentOperation = [];
-let result = [];
+let firstOperand = "";
+let secondOperand = "";
+let currentOperation = "";
+let result = "";
 
 
 eraseButton.addEventListener('click', () => {
-    display.textContent = "0";
-    firstOperand = [];
-    currentOperation = [];
-    result = [];
+    display.textContent = "";
+    firstOperand = "";
+    secondOperand = "";
+    currentOperation = "";
+    result = "";
 })
 
 numberButtons.forEach((button) => 
@@ -31,55 +33,53 @@ operatorButtons.forEach((button) =>
 );
 
 function appendNumber(number) {
-    if (display.textContent === "0") {
-        display.textContent = "";
-        display.textContent = number;
+    if (display.textContent === "") {
+        display.textContent += number;
+       
         
     } else {
         display.textContent += number;
+        
     }
+
 }
 
 function setOperation(operator) {
+    firstOperand = display.textContent;
     currentOperation = operator;
     display.textContent = "";
+    console.log(firstOperand);
+    console.log(currentOperation);
     
-console.log(firstOperand);
-console.log(currentOperation);
 }
 
-
-function evaluate(firstOperand, currentOperation, result) {
-    if (firstOperand && currentOperation) {
-        display.textContent = result;
-    }
+/*
+//Operate function
+let operate = (currentOperation, firstOperand, secondOperand) => {
+    
+    secondOperand.push(Number(display.textContent));
+    
     a = firstOperand;
-    b = result;
+    b = secondOperand;
     switch (currentOperation) {
         case "+":
             result = add(a, b);
-            display.textContent = result;
+            display.textContent = ''
+            display.textContent += result;
         case "-":
             result = subtract(a, b);
             display.textContent = result;
-
         case "*":
             result = multiply(a, b);
             display.textContent = result;
-
         case "/":
-             if (b === 0) return "INFINITY";
+             if (b === 0) display.textContent = "INFINITY";
              else result = divide(a, b);
              display.textContent = result;
-
         default:
-            return null;   
-}
-}
-
-
-equalButton.addEventListener('click', evaluate(firstOperand, currentOperation, result));
-
+            return null;    
+    }
+} */
 
 //Functions for math operation function
 let add = (a, b) => {
@@ -98,22 +98,42 @@ let divide = (a, b) => {
     return a / b;
 }
 
-//Operate function
-let operate = (operator, a, b) => {
-    a = Number(a);
-    b = Number(b);
-    switch (operator) {
-        case "+":
-            return add(a, b);
-        case "-":
-            return subtract(a, b);
-        case "*":
-            return multiply(a, b);
-        case "/":
-             if (b === 0) return "INFINITY";
-             else return divide(a, b);
-        default:
-            return null;    
+
+equalButton.addEventListener('click', function(event){
+    secondOperand = display.textContent;
+        
+        console.log(secondOperand);
+        a = Number(firstOperand);
+        b = Number(secondOperand);
+        switch (currentOperation) {
+            case "+":
+                result = add(a, b);
+                display.textContent = '';
+                display.textContent += result;
+                break;
+            case "-":
+                result = subtract(a, b);
+                display.textContent = result;
+                break;
+            case "*":
+                result = multiply(a, b);
+                display.textContent = result;
+                break;
+            case "/":
+                 if (b == 0) {
+                     display.textContent = "You can't divide by zero!";
+                 } else {
+                     result = divide(a, b);
+                     display.textContent = result;
+                 }
+                 break;
+            default:
+                return null;    
+        }
     }
-}
+
+);
+
+
+
 
