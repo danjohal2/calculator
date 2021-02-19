@@ -6,7 +6,7 @@ let numberButtons = document.querySelectorAll(".number");
 let clearButton = document.querySelector(".clearentry");
 let eraseButton = document.querySelector(".allclear");
 let decimalButton = document.querySelector(".decimal");
-let posneg = document.querySelector(".posneg");
+
 
 
 
@@ -14,7 +14,6 @@ let firstOperand = "";
 let secondOperand = "";
 let currentOperation = "";
 let result = "";
-
 
 eraseButton.addEventListener('click', () => {
     display.textContent = "";
@@ -135,5 +134,26 @@ equalButton.addEventListener('click', function(event){
 );
 
 
+appendDecimal();
 
+function appendDecimal() {
+    decimalButton.addEventListener('click', () => {
+        if (display.textContent == "")
+            display.textContent = "0";
+        if (display.textContent.includes("."))
+            return;
+        display.textContent += ".";
+    });
+}
 
+clearEntry();
+
+function clearEntry() {
+    clearButton.addEventListener('click', () => {
+        if (display.textContent == "") {
+            display.textContent = "";
+        } else {
+           display.textContent = display.textContent.toString().slice(0, -1);
+        }
+    });
+}
