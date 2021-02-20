@@ -15,13 +15,17 @@ let secondOperand = "";
 let currentOperation = "";
 let result = "";
 
-eraseButton.addEventListener('click', () => {
-    display.textContent = "";
-    firstOperand = "";
-    secondOperand = "";
-    currentOperation = "";
-    result = "";
-})
+erase();
+function erase() {
+    eraseButton.addEventListener('click', () => {
+        display.textContent = "";
+        firstOperand = "";
+        secondOperand = "";
+        currentOperation = "";
+        result = "";
+    })
+}
+
 
 numberButtons.forEach((button) => 
     button.addEventListener('click', () => appendNumber(button.textContent))
@@ -97,41 +101,47 @@ let divide = (a, b) => {
     return a / b;
 }
 
+evaluate();
 
-equalButton.addEventListener('click', function(event){
-    secondOperand = display.textContent;
-        
-        console.log(secondOperand);
-        a = Number(firstOperand);
-        b = Number(secondOperand);
-        switch (currentOperation) {
-            case "+":
-                result = add(a, b);
-                display.textContent = '';
-                display.textContent += result;
-                break;
-            case "-":
-                result = subtract(a, b);
-                display.textContent = result;
-                break;
-            case "*":
-                result = multiply(a, b);
-                display.textContent = result;
-                break;
-            case "/":
-                 if (b == 0) {
-                     display.textContent = "You can't divide by zero!";
-                 } else {
-                     result = divide(a, b);
-                     display.textContent = result;
-                 }
-                 break;
-            default:
-                return null;    
+function evaluate() {
+    equalButton.addEventListener('click', () => {
+        secondOperand = display.textContent;
+            
+            console.log(secondOperand);
+            a = Number(firstOperand);
+            b = Number(secondOperand);
+            switch (currentOperation) {
+                case "+":
+                    result = add(a, b);
+                    display.textContent = '';
+                    display.textContent += result;
+                    break;
+                case "-":
+                    result = subtract(a, b);
+                    display.textContent = result;
+                    break;
+                case "*":
+                    result = multiply(a, b);
+                    display.textContent = result;
+                    break;
+                case "/":
+                     if (b == 0) {
+                         display.textContent = "You can't divide by zero!";
+                     } else {
+                         result = divide(a, b);
+                         display.textContent = result;
+                     }
+                     break;
+                default:
+                    return null;    
+            }
         }
-    }
+    
+    );
+}
 
-);
+
+
 
 
 appendDecimal();
@@ -157,3 +167,4 @@ function clearEntry() {
         }
     });
 }
+

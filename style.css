@@ -49,9 +49,13 @@ body {
   margin: 5px;
 }
 
+.display-container {
+  overflow: scroll;
+}
+
 .display {
   color: white;
-  font-size: 48px;
+  font-size: 36px;
   text-align: right;
   padding-top: 5%;
 }
